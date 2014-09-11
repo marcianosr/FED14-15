@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+
+	---- create hashes --- 
+	var hash = "#"; 
+	var col = ""; 
+
+	for(var i = 0; i < 7; i++)
+	{
+		col += "#";
+		console.log(col);
+	}	
+
+	Fizz buzzz
+
+	for (var i = 0; i < 101; i++)
+	{
+		
+		if ( i % 3 == 0 && i % 5 == 0 )
+		{
+			
+			console.log(i + " FIZZ BUZZ");
+		}
+		else if ( i % 5 == 0)
+		{
+			console.log(i + " buzz");
+		}
+		else if (  i % 3 == 0 ) 
+		{
+			console.log(i + " fizz");
+		}
+	}
+
+
+	Chessboard 
+
+	var hash = "#";
+	var board = "";
+
+	for( var i = 1; i <= 8; i ++)
+	{	
+		
+		
+		for ( var j = 1; j <= 8; j++)
+		{
+			
+
+			( (i + j) % 2 ) ? board += hash : board += " " ;
+
+			
+		}
+		board += "\n";
+	console.log(board)
+	
+	}
+
+
+	Bean counting
+
+	var count = 0; 
+	var countB = 0; 
+
+	function countBs(string)
+	{
+		while ( count < string.length )
+		{
+
+			if ( string.charAt(count) == "B")
+			{
+				countB++;
+			}
+			console.log('count' + count);
+			count++;
+
+		}
+		return countB;
+	}
+
+	var b = countBs("BOBBY"); 
+
+	console.log(b)
+
+
+	RANGE:
+	function range(start, end, step)
+	{
+		var numbers = [];
+
+		if ( !step )
+		{
+			step = 1;
+		}
+		
+			for ( start = 0; start <= end; start += step) 
+			{
+				numbers.push(start); 
+			}
+	
+		
+		return numbers;
+	}
+
+	var numbers = range(1, 10, 2); 
+	console.log(numbers);
+
+	function sum(array)
+	{
+		var total = 0;
+		for(var i = 0; i < array.length; i++ )
+		{
+			//console.
+			total += array[i];
+		}
+
+		return total;
+	}
+
+	var makeSum = sum (numbers); 
+	console.log( 'sum:  ' + makeSum)
+
+
+	REVERSE ARRAY 
+
+	var revArr = function reverseArray(array)
+	{
+		var newArr = [];
+		for ( var i = array.length; i >= 0; i-- )
+		{
+			newArr.push(array[i]);
+		}
+		return newArr;
+	}
+
+	console.log(revArr([0, 1, 2, 3]));
+	</script>
+
+
+</head>
+<body>
+	
+</body>
+</html>
