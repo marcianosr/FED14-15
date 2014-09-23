@@ -7,3 +7,5 @@ Best practices:
 5. Comment Your Code
 6. Embrace Progressive Enhancement ( NOOIT aannemen dat men javascript heeft aanstaan )
 7. Raw JavaScript Can Always Be Quicker Than Using a Library
+
+MArciano Schildmeijer
