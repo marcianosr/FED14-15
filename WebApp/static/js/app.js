@@ -147,21 +147,7 @@ var App = App || {};
 			for( var i = 0; i < el.length; i++)
 			{
 				action(el[i]);
-			}
-		},
-
-		toObject: function(array)
-		{
-			var newObj = {};
-			var count = 0;
-			this.forEach(array, function(el)
-			{	
-			
-				newObj[count]= el;
-				count++;
-			})
-		
-			return newObj;
+			}	
 		}
 	}
 
