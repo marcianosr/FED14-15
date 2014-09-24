@@ -148,6 +148,20 @@ var App = App || {};
 			{
 				action(el[i]);
 			}
+		},
+
+		toObject: function(array)
+		{
+			var newObj = {};
+			var count = 0;
+			this.forEach(array, function(el)
+			{	
+			
+				newObj[count]= el;
+				count++;
+			})
+		
+			return newObj;
 		}
 	}
 
