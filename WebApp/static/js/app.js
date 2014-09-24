@@ -40,7 +40,10 @@ var App = App || {};
 				{
 					return this.cover;
 				},
-				alt: function () {
+
+				alt: function () 
+				{
+					
 					return this.title;
 				}
 			} 
