@@ -1,173 +1,105 @@
+// Push all to github
+// Difference querySelector and getelementbyID 				| X
+// WebWorkers implementation
+// localStorage 											| /
+// searchbar setTimeout func 								| X
+// searchbar search on any word 							| X
+// searchbar show 'no results' when not found anything  	| X
+// searchbar search case insenstive							| X
+// Hide searchbar on unnecessary pages 						| X
+// Detailpagina 											| X
+// Swipe through actors 									| X
+// Modularity met requireJS (uitzoeken) 					| X
+// GruntJS 													| X 
+
 var App = App || {}; 
 
-(function(){ 
+
+(function()
+{ 	
 
 
-	App.content = 
-	{
-
-		movies: [ {
-					title: "HP", 
-					description: "The boy who lived", 
-					releaseDate: "1999",
-					cover: "images_/HP1.jpg"	
-				},
-
-				{
-					title: "HP2", 
-					description: "The chamber of secrets", 
-					releaseDate: "2001",
-					cover: "images_/HP2.jpg"	
-				},
-				{
-					title: "HP3", 
-					description: "The prison", 
-					releaseDate: "2002",
-					cover: "images_/HP3.jpg"	
-				},
-				{
-					title: "HP4", 
-					description: "The Triwizard tournament", 
-					releaseDate: "2005",
-					cover: "images_/HP4.jpg"	
-				} ],
-
-		directives: 
-		{
-			cover:
-			{
-				src:function()
-				{
-					return this.cover;
-				},
-
-				alt: function () 
-				{
-					
-					return this.title;
-				}
-			} 
-		},
-
-		about: 
-		{ 
-			title: "Dit is een titel",
-			description: "Dit is de beschrijving" 
-		}
-
-	}
 
 	App.controller = 
 	{
 
 		init: function()
 		{
-			console.log("init");
-
-			
 			App.routes.init();
-
-			App.section.init();
-		
-		}
+			App.UI.init();
 	
-		
-	}
+		},
 
-	App.section = 
-	{
-		init: function()
+		url:"http://dennistel.nl/movies",
+
+		movieDirectives: 
 		{
-			this.about();
-			this.movies();
-		
-		}, 
-
-		toggle: function(route)
-		{
-			var sections = document.querySelectorAll("section");
-
-			App.helpers.forEach(sections, function(section)
+			cover:
 			{
-				if (section)
+				src:function(params)
 				{
-					section.classList.remove("active");
+					return this.cover;
+				},
+
+				alt: function() 
+				{	
+					return this.title;
 				}
+			}, 
 
-				if (section.getAttribute("data-route") === route)
-				{
-					console.log("show " + route + "!");
-					section.classList.add("active");	
-				}
 
-			});
-		},
-		
-		about:function()
-		{
-			Transparency.render(document.querySelectorAll("section")[0], App.content.about);
-		},
-		
-		movies:function()
-		{
-			Transparency.render(document.querySelectorAll("section")[2], App.content.movies, App.content.directives);
-		}
-
-	}
-
-	App.routes = 
-	{
-		init: function()
-		{
-			console.log("init route");
-
-				routie({
-
-			    'about': function() 
-			    {
-			    	console.log("called about");
-			    	App.section.toggle('about');
-			    },
-
-			    'movies': function()
-			    {
-			    	console.log("on the movies");
-			    	App.section.toggle('movies');
-			    }
-
-			});
-		}
-
-	}
-
-	App.helpers = 
-	{
-		forEach: function(el, action)
-		{
-			for( var i = 0; i < el.length; i++)
+			genre: 
 			{
-				action(el[i]);
-			}
-		},
+				text: function()
+				{
+					return this.genres;
+				
+				}
+			},
 
-		toObject: function(array)
-		{
-			var newObj = {};
-			var count = 0;
-			this.forEach(array, function(el)
-			{	
+		
 			
-				newObj[count]= el;
-				count++;
-			})
-		
-			return newObj;
+			directors: 
+			{	
+				name:function(params)
+				{
+					
+					return "Director(s): " + this.name;
+
+				}
+			},
+
+			movie_id: 
+			{
+				href: function(params)
+				{
+
+					return "#movie/" + App.helpers.prettifyUrl(this.title);
+				}
+			}, 
+
+			actors:
+            {
+                url_photo:
+                {
+                    src: function()
+                    {
+                        return this.url_photo;
+                    }
+                },
+              
+                character:function()
+                {
+
+                	return this.character;
+                }
+
+            }
+
 		}
-	}
-
-
+		
+	};
 
 })();
 
-App.controller.init();
 
